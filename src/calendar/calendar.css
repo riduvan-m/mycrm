@@ -1,0 +1,233 @@
+.calendar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.icon-btn {
+  padding: 0.45rem 0.8rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.calendar-month {
+  margin: 0 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.calendar-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 1.25rem;
+}
+
+.calendar-card {
+  padding: 0.75rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.weekday {
+  padding: 0.25rem 0.5rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  min-height: 104px;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.day:hover {
+  background: var(--hover);
+}
+
+.day.outside {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.day.selected {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.day-number {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.day.today .day-number {
+  background: var(--accent);
+  color: #fff;
+}
+
+.day-events {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.event-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.event-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event-bar {
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 3px;
+  min-height: 0.9em;
+  border-radius: 2px;
+}
+
+.event-more {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.day-dots {
+  display: none;
+  gap: 3px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Agenda for the selected day */
+
+.agenda {
+  position: sticky;
+  top: 1rem;
+}
+
+.agenda .card-title {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.agenda-list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.agenda-list li {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.agenda-time {
+  width: 3rem;
+  flex-shrink: 0;
+  padding-top: 0.05rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.agenda-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.agenda-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.agenda-empty {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.type-legend {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1100px) {
+  .calendar-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .agenda {
+    position: static;
+  }
+}
+
+/* Phones: compact day cells with coloured dots; details live in the agenda below. */
+@media (max-width: 760px) {
+  .calendar-card {
+    padding: 0.5rem;
+  }
+
+  .calendar-grid {
+    gap: 2px;
+  }
+
+  .weekday {
+    padding: 0.25rem 0;
+    text-align: center;
+  }
+
+  .day {
+    align-items: center;
+    min-height: 52px;
+    padding: 0.25rem;
+  }
+
+  .day-events {
+    display: none;
+  }
+
+  .day-dots {
+    display: flex;
+  }
+}

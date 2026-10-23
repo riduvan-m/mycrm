@@ -1,0 +1,129 @@
+.table-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.record-table th {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.record-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.record-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.record-table tbody tr:hover {
+  background: var(--hover);
+}
+
+.record-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.record-table a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.record-table a:hover {
+  text-decoration: underline;
+}
+
+.table-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.cell-main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cell-title {
+  font-weight: 500;
+}
+
+.cell-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Phones: each row becomes a card, with the column name as a label beside each value. */
+@media (max-width: 760px) {
+  .record-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .record-table,
+  .record-table tbody,
+  .record-table tr {
+    display: block;
+  }
+
+  .record-table tr {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .record-table tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .record-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.3rem 0;
+    border: none;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .record-table td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    text-align: left;
+    color: var(--text-muted);
+  }
+
+  .record-table td:first-child {
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    text-align: left;
+  }
+
+  .record-table td:first-child::before,
+  .record-table .table-empty::before {
+    display: none;
+  }
+
+  .record-table .table-empty {
+    justify-content: center;
+  }
+}
